@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'hrsystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'AC_online_HR_system',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',  # Set to your database server
+        'PORT': '5432',       # Default port for PostgreSQL
     }
 }
 
