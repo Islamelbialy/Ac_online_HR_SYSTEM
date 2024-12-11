@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Branches,Departments
+
 
 # Create your views here.
 def hellowWorldView(request):
@@ -38,3 +39,14 @@ def BranchesList(request):
 def BrancheDetails(request,branche_id):
     branche = Branches.objects.get(pk=branche_id)
     return render(request,"brancheDetails.html",{"branche":branche})
+
+def addBranche(request):
+    if request.method == 'POST':
+        name = request.POST["brancheName"]
+        address = request.POST["brancheAddress"]
+        phone = request.POST["branchePhone"]
+        email = request.POST["brancheEmail"]
+        b = Branches(name=name,address=address,phone=phone,email=email)
+        b.save()
+        return redirect('BrachesList')
+    return render(request,'addBranche.html')

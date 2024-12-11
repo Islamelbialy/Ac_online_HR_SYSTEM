@@ -52,5 +52,5 @@ py manage.py makemigrations
 
 python manage.py createsuperuser
 pip3 freeze > requirements.txt
-
+pip install -r requirements.txt
 py manage.py migrate

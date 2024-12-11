@@ -27,8 +27,12 @@
             <p><strong>phone:</strong> {{branche.phone}}</p>
             <p><strong>email:</strong> {{branche.email}}</p>
         </div>
+        <div class="w-75 mx-auto">
+            <a href="#" class="btn btn-primary mb-3">edit branche</a>
+        </div>
         <div class="w-75 mx-auto bg-body-secondary p-3 rounded-5 p-4">
             <h3 class="text-primary">{{branche.name}} departments</h3>
+            {% if branche.Branche_Department.all %}
             <table class="table table-striped  mx-auto">
                 <thead class="table-dark">
                     <th>name</th>
@@ -48,6 +52,11 @@
                     {%endfor%}
                 </tbody>
             </table>
+            {%else%}
+            <div class="alert alert-danger" role="alert">
+                no departments added yet !!!
+            </div>
+            {%endif%}
         </div>
     </div>
 </body>

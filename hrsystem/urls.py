@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', compViews.hellowWorldView, name='hello'),
     path("",compViews.BranchesList,name="BrachesList"),
-    path("brancheDetails/<int:branche_id>",compViews.BrancheDetails,name="BrancheDetails")
+    path("brancheDetails/<int:branche_id>",compViews.BrancheDetails,name="BrancheDetails"),
+    path("addBranche",compViews.addBranche,name="addBranche")
 ]

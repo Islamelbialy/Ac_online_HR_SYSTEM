@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css\bootstrap.css' %}"/>
+    <script src="{% static 'js\bootstrap.bundle.min.js'%}"></script>
+    <title>add branche</title>
+</head>
+<body>
+    <div class="container">
+        <div class="mt-5 bg-color bg-primary-subtle pt-4 pb-2 ps-4 rounded-5 mb-3 w-75 mx-auto">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="{% url 'BrachesList'%}">branches List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">add branche</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="w-75 mx-auto bg-light p-5 pt-1">
+        <h3 class="text-primary mb-5 text-center">Add branche data</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" name="brancheName">
+                <div  class="form-text">name can't be more than 50 character</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">address</label>
+                <input type="text" class="form-control" name="brancheAddress">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">phone</label>
+                <input type="text" class="form-control" name="branchePhone">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">email</label>
+                <input type="email" class="form-control" name="brancheEmail">
+            </div>
+            <input type="submit" value="save Branche" class="btn btn-success" >
+        </form>
+        </div>
+    </div>
+</body>
+</html>
