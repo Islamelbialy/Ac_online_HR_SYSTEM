@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css\bootstrap.css' %}"/>
+    <script src="{% static 'js\bootstrap.bundle.min.js'%}"></script>
+    <title>branche details</title>
+</head>
+<body>
+    <div class="container">
+        <div class="mt-5 bg-color bg-primary-subtle pt-4 pb-2 ps-4 rounded-5 mb-3 w-75 mx-auto">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'BrachesList'%}">branches List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{branche.name}}</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="w-75 mx-auto bg-body-secondary p-3 rounded-5 mb-3">
+            <p>
+                <h3 class="text-primary">{{branche.name}}</h3>
+                <p class="text-secondary-emphasis opacity-75">{{branche.address}}</p>
+            </p>
+            
+            <p><strong>phone:</strong> {{branche.phone}}</p>
+            <p><strong>email:</strong> {{branche.email}}</p>
+        </div>
+        <div class="w-75 mx-auto bg-body-secondary p-3 rounded-5 p-4">
+            <h3 class="text-primary">{{branche.name}} departments</h3>
+            <table class="table table-striped  mx-auto">
+                <thead class="table-dark">
+                    <th>name</th>
+                    <th>phone</th>
+                    <th>email</th>
+                </thead>
+                <tbody>
+                    {%for department in branche.Branche_Department.all %}
+                        <tr>
+                            <td>
+                                <h5>{{department.name}}</h5>
+                                <p class="text-secondary">{{department.description}}</p>
+                            </td>
+                            <td>{{department.phone}}</td>
+                            <td>{{department.email}}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

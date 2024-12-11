@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css\bootstrap.css' %}"/>
+    <script src="{% static 'js\bootstrap.bundle.min.js'%}"></script>
+    <title>Branches List</title>
+</head>
+<body>
+    <div class="container">
+        <div class="mt-5 bg-color bg-primary-subtle pt-4 pb-2 ps-4 rounded-5 mb-3 w-75 mx-auto">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><h4>branches List</h4></li>
+                <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
+                </ol>
+            </nav>
+        </div>
+        <table class="table table-striped w-75 mx-auto">
+            <thead class="table-dark">
+                <th>name</th>
+                <th>phone</th>
+                <th>email</th>
+            </thead>
+            <tbody>
+                {%for branch in branches%}
+                    <tr>
+                        <td>
+                            <h5><a href="{% url 'BrancheDetails' branche_id=branch.pk %}">{{branch.name}}</a></h5>
+                            <p class="text-secondary">{{branch.address}}</p>
+                        </td>
+                        <td>{{branch.phone}}</td>
+                        <td>{{branch.email}}</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

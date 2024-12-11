@@ -9,6 +9,9 @@ class Branches(models.Model):
     email = models.EmailField(blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.name
+
 
 class Departments(models.Model):
     name = models.CharField(null=False,unique=True,max_length=50)
@@ -17,3 +20,6 @@ class Departments(models.Model):
     email = models.EmailField(blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     branche = models.ForeignKey('Branches',related_name="Branche_Department",on_delete= models.CASCADE)
+
+    def __str__(self):
+        return self.name
