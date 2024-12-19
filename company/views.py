@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Branches,Departments
-
+from .forms import departmentForm
 
 # Create your views here.
 def hellowWorldView(request):
@@ -50,3 +50,26 @@ def addBranche(request):
         b.save()
         return redirect('BrachesList')
     return render(request,'addBranche.html')
+
+def editBranche(request,branche_id):
+    branche = Branches.objects.get(pk = branche_id)
+    if request.method == 'POST':
+        branche.name = request.POST["brancheName"]
+        branche.address = request.POST["brancheAddress"]
+        branche.phone = request.POST["branchePhone"]
+        branche.email = request.POST["brancheEmail"]
+        branche.save()
+        return redirect('BrachesList')
+    return render(request,'editBranche.html',{'b':branche})
+
+def addDepartment(request,branche_id):
+    b = Branches.objects.get(pk=branche_id)
+    form= departmentForm
+    if request.method == 'POST':
+        form = departmentForm(request.POST)
+        if form.is_valid():
+            formDepartment = form.save(commit=False)
+            formDepartment.branche = b
+            formDepartment.save()
+            return redirect('BrancheDetails',b.pk)
+    return render(request,"addDepartment.html",{'form':form,'branche':b})

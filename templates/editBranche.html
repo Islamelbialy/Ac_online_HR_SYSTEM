@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css\bootstrap.css' %}"/>
     <script src="{% static 'js\bootstrap.bundle.min.js'%}"></script>
-    <title>add branche</title>
-    
+    <title>edit branche</title>
 </head>
 <body>
     <div class="container">
@@ -20,27 +19,27 @@
             </nav>
         </div>
         <div class="w-75 mx-auto bg-light p-5 pt-1">
-        <h3 class="text-primary mb-5 text-center">Add branche data</h3>
+        <h3 class="text-primary mb-5 text-center">edit branche data</h3>
         <form method="post">
             {% csrf_token %}
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="brancheName" required>
+                <input type="text" class="form-control" name="brancheName" value="{{b.name}}"/>
                 <div  class="form-text">name can't be more than 50 character</div>
             </div>
             <div class="mb-3">
                 <label class="form-label">address</label>
-                <input type="text" class="form-control" name="brancheAddress">
+                <input type="text" class="form-control" name="brancheAddress" value="{{b.address}}"/>
             </div>
             <div class="mb-3">
                 <label class="form-label">phone</label>
-                <input type="text" class="form-control" name="branchePhone">
+                <input type="text" class="form-control" name="branchePhone" value="{{b.phone}}"/>
             </div>
             <div class="mb-3">
                 <label class="form-label">email</label>
-                <input type="email" class="form-control" name="brancheEmail">
+                <input type="email" class="form-control" name="brancheEmail" value="{{b.email}}"/>
             </div>
-            <input type="submit" value="save Branche" class="btn btn-success" >
+            <input type="submit" value="edit Branche" class="btn btn-success" >
         </form>
         </div>
     </div>

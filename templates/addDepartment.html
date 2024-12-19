@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add department</title>
+    <link rel="stylesheet" href="{% static 'css\bootstrap.css' %}"/>
+    <script src="{% static 'js\bootstrap.bundle.min.js'%}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="mt-5 bg-color bg-primary-subtle pt-4 pb-2 ps-4 rounded-5 mb-3 w-75 mx-auto">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="{% url 'BrachesList'%}">branches List</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'BrancheDetails' branche.pk %}">{{branche.name}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">add departmnet</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="w-75 mx-auto bg-light p-5 pt-1">
+        <h3 class="text-primary mb-5 text-center">Add department data</h3>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% load widget_tweaks %}
+            {% if not form.is_bound %}
+                {% if form.fields %}
+                    {%for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label">{{field.label}}</label>
+                            {% render_field field class="form-control" %}
+                            <div  class="form-text">{{field.help_text}}</div>
+                        </div>
+                    {%endfor%}
+                {%endif%}
+            {%else%}
+            {% if form.fields %}
+                    {%for field in form %}
+                        {%if not field.errors%}
+                            <div class="mb-3">
+                                <label class="form-label">{{field.label}}</label>
+                                {% render_field field class="form-control is-valid" %}
+                                <div  class="form-text">{{field.help_text}}</div>
+                            </div>
+                        {%else%}
+                        <div class="mb-3">
+                            <label class="form-label">{{field.label}}</label>
+                            {% render_field field class="form-control is-invalid" %}
+                            {%for error in field.errors%}
+                                <div id="validationServer03Feedback" class="invalid-feedback">
+                                {{error}}
+                                </div>
+                            {%endfor%}
+                            <div  class="form-text">{{field.help_text}}</div>
+                        </div>
+                        {%endif%}
+                    {%endfor%}
+                {%endif%}
+            {%endif%}
+            <input type="submit" value="add deparment" class="btn btn-success">
+        </form>
+        </div>
+    </div>
+</body>
+</html>

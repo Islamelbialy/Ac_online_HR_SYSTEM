@@ -23,5 +23,7 @@ urlpatterns = [
     path('hello/', compViews.hellowWorldView, name='hello'),
     path("",compViews.BranchesList,name="BrachesList"),
     path("brancheDetails/<int:branche_id>",compViews.BrancheDetails,name="BrancheDetails"),
-    path("addBranche",compViews.addBranche,name="addBranche")
+    path("addBranche",compViews.addBranche,name="addBranche"),
+    path("editBranch/<int:branche_id>",compViews.editBranche,name="editBranch"),
+    path("addDepartment/<int:branche_id>",compViews.addDepartment,name="addDepartment"),
 ]

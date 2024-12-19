@@ -28,7 +28,7 @@
             <p><strong>email:</strong> {{branche.email}}</p>
         </div>
         <div class="w-75 mx-auto">
-            <a href="#" class="btn btn-primary mb-3">edit branche</a>
+            <a href="{% url 'editBranch' branche.pk %}" class="btn btn-primary mb-3">edit branche</a>
         </div>
         <div class="w-75 mx-auto bg-body-secondary p-3 rounded-5 p-4">
             <h3 class="text-primary">{{branche.name}} departments</h3>
@@ -57,6 +57,7 @@
                 no departments added yet !!!
             </div>
             {%endif%}
+            <a href="{% url 'addDepartment' branche.pk %}" class="btn btn-primary">add department</a>
         </div>
     </div>
 </body>
